@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-
 using Notes.Api.Data;
 using Notes.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+// builder.Services.AddOpenApi();  <-- Commented out
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddCors(options =>
 {
@@ -20,7 +19,7 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    // app.MapOpenApi();  <-- Commented out
 
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<NotesDbContext>();
