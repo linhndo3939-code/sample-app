@@ -14,10 +14,12 @@ jobs:
           dotnet-version: "8.0.x" 
 
       - name: Build
-        run: dotnet build --configuration Release
+        # Pointing exactly to the Api project file
+        run: dotnet build backend/Notes.Api.csproj --configuration Release
 
       - name: Publish
-        run: dotnet publish -c Release -o ./output
+        # Pointing exactly to the Api project file
+        run: dotnet publish backend/Notes.Api.csproj -c Release -o ./output
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
